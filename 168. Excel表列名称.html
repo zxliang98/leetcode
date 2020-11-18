@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /**
+     * @param {number} n
+     * @return {string}
+     */
+    var convertToTitle = function (n) {
+      let letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+      let count = 1, result = ''
+      for (let i = 1; ; i++) {
+        if (n / Math.pow(26, i) < 1) {
+          count = i
+          break
+        }
+      }
+      console.log(count);
+      for (let index = 1; index <= count; index++) {
+        let ind = n % Math.pow(26, index)
+        result += letters[ind]
+      }
+      return result
+    };
+    let n = 77
+
+    console.log(convertToTitle(n));
+  </script>
+</body>
+
+</html>

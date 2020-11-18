@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /**
+    * @param {string} num1
+    * @param {string} num2
+    * @return {string}
+    */
+    var addStrings = function (num1, num2) {
+      let len1 = num1.length, len2 = num2.length
+      let maxLen = len1 > len2 ? len1 : len2
+      // 进位 结果
+      let mid = 0, res = '', midAdd = 0
+      for (let index = 0; index < maxLen + 1; index++) {
+        if (mid) {
+          midAdd = ((num1[len1 - index - 1] || 0) - 0) + ((num2[len2 - index - 1] || 0) - 0) + 1
+          mid = 0
+        } else {
+          midAdd = ((num1[len1 - index - 1] || 0) - 0) + ((num2[len2 - index - 1] || 0) - 0)
+        }
+        if (midAdd >= 10) {
+          mid = Math.floor(midAdd / 10)
+          res += midAdd % 10
+        } else {
+          res += midAdd
+        }
+      }
+      res = res.split('').reverse().join('')
+      if(res[0]==='0') res = res.slice(1)
+      return res
+    };
+//     "18582506933032752"
+// "366213329703"
+    let n1 = '18582506933032752', n2 = '366213329703'
+    console.log(addStrings(n1, n2));
+  </script>
+</body>
+
+</html>

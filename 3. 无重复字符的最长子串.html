@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /**
+    * @param {string} s
+    * @return {number}
+    */
+    var s = "aabaaaaab!bb"
+    var lengthOfLongestSubstring = function (s) {
+      var arr = [], result = 0, mid1 = [], mid2 = []
+      arr = s.split('')
+      for (var i = 0; i < arr.length; i++) {
+        if (mid1.includes(arr[i])) {
+          mid2.push(mid1)
+          i = s.slice(0,i).lastIndexOf(arr[i])
+          mid1 = []
+        } else {
+          mid1.push(arr[i])
+        }
+      }
+      mid2.push(mid1)
+      console.log(mid2);
+      return Math.max(...mid2.map(item => item.length))
+    };
+
+    console.log(lengthOfLongestSubstring(s));
+
+  </script>
+</body>
+
+</html>
